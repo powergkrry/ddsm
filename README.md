@@ -60,9 +60,10 @@ The software provided makes it simple to get a DDSM mammogram in a usable file f
 
 To download and convert the mammogram `A_1141_1.LEFT_MLO` into PNG format:
 
-1. If you closed the terminal or Cygwin program, restart it and change to the `dddm-software` directory.
-2. Run `./get-ddsm-mammo A_1141_1.LEFT_MLO`. The mammogram will be downloaded and the converted file will be placed in the `ddsm-software` directory. The full (Unix) path to the file will be printed to the screen. You should probably move the resulting files to a more convenient directory.
-3. View the downloaded and converted file. For example in Windows, double-click on the file.
+1. If you closed the terminal or Cygwin program, restart it and change to the `ddsm-software` directory.
+2. Linux Users : You should modify "get-ddsm-mammo" file. At the line 227, replace `command = "./jpeg.exe -d -s #{ljpeg_file}"` with `command = "./jpeg -d -s #{ljpeg_file}"`. At the line 237, replace `command = "./ddsmraw2pnm.exe #{raw_file} #{dims_and_digitizer}"` with `command = "./ddsmraw2pnm #{raw_file} #{dims_and_digitizer}"`
+3. Run `./get-ddsm-mammo A_1141_1.LEFT_MLO`. The mammogram will be downloaded and the converted file will be placed in the `ddsm-software` directory. The full (Unix) path to the file will be printed to the screen. You should probably move the resulting files to a more convenient directory.
+4. View the downloaded and converted file. For example in Windows, double-click on the file.
 
 The `get-ddsm-mammo` step obtains and converts the mammogram named `A_1141_1.LEFT_MLO`. The program connects to the DDSM’s FTP server, downloads the corresponding “lossless” JPEG file, converts that file to a raw binary format, converts that file to a simple human-readable file format called PNM, converts that file to the desired PNG format, and finally deletes the “lossless” JPEG and all intermediate files. Because the DDSM files are large and conversion is processor intensive, it may take a nontrivial amount of time for the file to be downloaded and converted. Exactly how long depends on the speed of your Internet connection and how powerful your computer’s CPU is. When this software was originally written (c. 2006), it took about 3 minutes to download and convert a mammogram using a domestic 10Mbps cable modem and a 2006-vintage 2GHz Intel Core 2 Duo CPU. This will hopefully be appreciably faster for 2016-vintage Internet connections and CPUs.
 
